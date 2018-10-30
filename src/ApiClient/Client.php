@@ -123,6 +123,41 @@ class Client
 			]
 		]);
     }
+
+    private function prepareUrl($endpoint, $includes, $perPage = 15, $currentPage = 1) 
+    {
+        $url = $this->baseUrl."/".$endpoint;
+        if(isset(parse_url($url)['query'])){
+            $sign = '&';
+        } else {
+            $sign = '?';
+        }
+        if(count($includes)) {
+            $url .= $sign."include=".implode(",", $includes);
+            $url .= "&limit=". $perPage ."&page=". $currentPage;
+        }else{
+            $url .= $sign."limit=". $perPage ."&page=". $currentPage;
+        }
+        return $url;
+    }
+
+    public function getToken() 
+    {
+		return $this->oAuth->getAccessToken();
+    }
+    
+    private function parseErrors($contents) 
+    {
+		$contents = $this->decodeResponseData($contents);
+		if (isset($contents['errors'])) {
+			$message = GuzzleHttp\json_encode($contents['errors']);
+		} else {
+			$message = $contents['message'];;
+		}
+		$this->lastError = $message;
+		return $message;
+	}
+
     
     public function get($endpoint, $includes = [], $perPage = 15, $currentPage = 1) {
         return $this->call('GET', $endpoint, [], $includes, $perPage, $currentPage);
