@@ -11,7 +11,7 @@ class Client
 
     public function __construct($baseUrl, $client_id, $client_secret, $username, $password)
     {
-        $this->client = $this->getClient();
+        $this->client = $this->getClient($baseUrl);
     }
 
     public static function init($baseUrl, $client_id, $client_secret, $username, $password)
