@@ -35,18 +35,18 @@ class Client
     }
 
     public function get($endpoint) {
-        return $this->call('GET', $endpoint);
+        return $this->client->request('GET', $endpoint);
     }
 
 	public function put($endpoint) {
-		return $this->call('PUT', $endpoint, $data, $includes);
+
     }
     
 	public function post($endpoint) {
-		return $this->call('POST', $endpoint, $data, $includes);
+
     }
     
 	public function delete($endpoint) {
-		return $this->call('DELETE', $endpoint);
+        
 	}
 }
