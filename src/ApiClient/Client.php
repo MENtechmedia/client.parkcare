@@ -28,7 +28,6 @@ class Client
 		$this->uploadClient = new GuzzleHttp\Client(['debug' => false, 'exceptions' => false]);
 		$this->addHeader('Content-Type', 'application/json');
 		$this->addHeader('Accept', 'application/json');
-		$this->setTenantId($tenantId);
     }
     
     public function getLastError() 
