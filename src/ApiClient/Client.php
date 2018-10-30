@@ -13,15 +13,13 @@ class Client
 	private $uploadClient;
 	private $oAuth;
 	private $headers;
-	private $tenantId;
 	private static $instance = null;
 	public $exceptions = false;
     public $lastError = "";
     
-	private function __construct($auhUrl, $baseUrl, $clientId, $clientSecret, $username, $password, $tenantId)
+	private function __construct($auhUrl, $baseUrl, $clientId, $clientSecret, $username, $password)
 	{
 		$this->baseUrl = $baseUrl;
-		$this->tenantId = $tenantId;
 		$this->headers = [];
 		$this->client = $this->getClient($auhUrl, $clientId, $clientSecret, $username, $password);
 		// use a different client for file uploads
@@ -35,10 +33,10 @@ class Client
 		return $this->lastError;
     }
     
-    public static function init($auhUrl, $baseUrl, $clientId, $clientSecret, $username, $password, $tenantId) 
+    public static function init($auhUrl, $baseUrl, $clientId, $clientSecret, $username, $password) 
     {
 		if(!self::$instance) {
-			self::$instance = new self($auhUrl, $baseUrl, $clientId, $clientSecret, $username, $password, $tenantId);
+			self::$instance = new self($auhUrl, $baseUrl, $clientId, $clientSecret, $username, $password);
 		}
 		return self::$instance;
     }
