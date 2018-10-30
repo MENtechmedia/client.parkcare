@@ -7,6 +7,8 @@ class Client
     private $baseUrl;
     private $client;
 
+    private static $instance = null;
+
     public function __construct($baseUrl, $client_id, $client_secret, $username, $password)
     {
         $this->client = $this->getClient();
