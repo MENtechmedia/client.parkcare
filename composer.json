@@ -1,5 +1,5 @@
 {
-    "name": "mentechmedia/client-parkcare",
+    "name": "mentechmedia/api-client",
     "description": "ParkCare API Client for consuming the Parkcare API",
     "type": "library",
     "require": {
@@ -20,7 +20,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
-            "mentechmedia": "src/"
+            "MENtechmedia": "src/"
         }
     }
 }
