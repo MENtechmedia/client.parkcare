@@ -34,26 +34,42 @@ class Client
 		]);
     }
 
-    public static function getInstance() {
+    public static function getInstance() 
+    {
 		if(!self::$instance) {
 			throw new ApiException("Client not initialized, run init() first");
 		}
 		return self::$instance;
-	}
-
-    public function get($endpoint) {
-        return $this->client->request('GET', $endpoint);
-    }
-
-	public function put($endpoint) {
-
     }
     
-	public function post($endpoint) {
+    public function call($method, $endpoint, $data = [])
+    {
+        try {
+            $response = $this->client->request($method, $endpoint, [
+                'json' => $data
+            ]);
+        } catch (ApiException $e){
 
+        }
+    }
+
+    public function get($endpoint) 
+    {
+        return $this->call('GET', $endpoint);
+    }
+
+    public function put($endpoint) 
+    {
+        
     }
     
-	public function delete($endpoint) {
+    public function post($endpoint, $data) 
+    {
+        return $this->call('GET', $endpoint, $data);
+    }
+    
+    public function delete($endpoint) 
+    {
         
 	}
 }
