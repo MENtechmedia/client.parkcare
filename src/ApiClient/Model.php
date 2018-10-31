@@ -6,7 +6,7 @@ class Model
 
     public function __get($property)
     {
-        if(property_exists($property, $this)){
+        if(property_exists($this, $property)){
             return $this->$property;
         }
         
