@@ -2,7 +2,7 @@
 
 class ModelTransformer
 {
-    public static function createModelsFromData($data, $endpoint)
+    public static function createModelsFromData($data)
     {
         $collection = [];
 
