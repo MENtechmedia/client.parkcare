@@ -34,6 +34,13 @@ class Client
 		]);
     }
 
+    public static function getInstance() {
+		if(!self::$instance) {
+			throw new Exception("Client not initialized, run init() first");
+		}
+		return self::$instance;
+	}
+
     public function get($endpoint) {
         return $this->client->request('GET', $endpoint);
     }
