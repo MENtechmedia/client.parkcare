@@ -9,6 +9,11 @@ class Model
         $this->fill($attributes);
     }
 
+    public function fill($attributes) 
+    {
+		$this->attributes = $attributes;
+	}
+
     public static function all($endpoint)
     {
         $client = Client::getInstance();
