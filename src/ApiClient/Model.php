@@ -28,7 +28,7 @@ class Model
     {
         $client = Client::getInstance();
 
-        return self::getContentsFromResponse($client->post($endpoint, $data))
+        return self::getContentsFromResponse($client->post($endpoint, $data));
     }
 
     private static function getContentsFromResponse($response)
