@@ -2,12 +2,11 @@
 
 class Model
 {
-    private $endpoint;
     private $attributes;
 
-    public function __construct($endpoint, $attributes)
+    public function __construct($attributes)
     {
-        $this->endpoint = $endpoint;
+        $this->fill($attributes);
     }
 
     public static function all($endpoint)

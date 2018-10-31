@@ -52,7 +52,9 @@ class Client
 
         }
 
-        return $response->getBody()->getContents();
+        $models = ModelTransformer::createModelsFromData($response->getBody()->getContents());
+
+        return $models;
     }
 
     public function get($endpoint) 
