@@ -52,10 +52,16 @@ class Client
 
         }
 
-        $models = ModelTransformer::createModelsFromData($response->getBody()->getContents());
+        $decodedResponse = $this->decodeResponseData($response->getBody()->getContents());
+
+        $models = ModelTransformer::createModelsFromData($decodedResponse);
 
         return $models;
     }
+
+    private function decodeResponseData($data) {
+		return json_decode($data, true);
+	}
 
     public function get($endpoint) 
     {
