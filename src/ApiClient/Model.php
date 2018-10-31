@@ -2,7 +2,7 @@
 
 class Model
 {
-    private $attributes;
+    public $attributes;
 
     public function __construct($attributes)
     {
