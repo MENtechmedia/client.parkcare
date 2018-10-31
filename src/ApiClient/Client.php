@@ -54,9 +54,11 @@ class Client
 
         $decodedResponse = $this->decodeResponseData($response->getBody()->getContents());
 
-        $models = ModelTransformer::createModelsFromData($decodedResponse);
+        $data = array_pop($decodedResponse);
 
-        return $models;
+        $data['data'] = ModelTransformer::createModelsFromData($data['data']);
+
+        return $data;
     }
 
     private function decodeResponseData($data) {
