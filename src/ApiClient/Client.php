@@ -60,9 +60,9 @@ class Client
         return $this->call('GET', $endpoint);
     }
 
-    public function put($endpoint) 
+    public function put($endpoint, $data) 
     {
-
+        return $this->call('PUT', $endpoint, $data);
     }
     
     public function post($endpoint, $data) 
@@ -72,6 +72,6 @@ class Client
     
     public function delete($endpoint) 
     {
-        
+        return $this->call('DELETE', $endpoint);
 	}
 }

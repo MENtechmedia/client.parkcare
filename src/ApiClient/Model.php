@@ -17,7 +17,7 @@ class Model
         return $client->get($endpoint);
     }
 
-    public static function byId($endpoint, $id)
+    public static function find($endpoint, $id)
     {   
         $client = Client::getInstance();
 
@@ -29,5 +29,19 @@ class Model
         $client = Client::getInstance();
 
         return $client->post($endpoint, $data);
+    }
+
+    public static function update($endpoint, $id, $data = [])
+    {
+        $client = Client::getInstance();
+
+        return $client->put($endpoint . "/" . $id, $data);
+    }
+
+    public static function delete($endpoint, $id)
+    {
+        $client = Client::getInstance();
+
+        return $client->delete($endpoint . "/" . $id);
     }
 }
