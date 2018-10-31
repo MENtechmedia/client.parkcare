@@ -4,6 +4,15 @@ class Model
 {
     public $attributes;
 
+    public function __get($property)
+    {
+        if(property_exists($property, $this)){
+            return $this->$property;
+        }
+        
+        return $this->attributes[$property];
+    }
+
     public function __construct($attributes)
     {
         $this->fill($attributes);
