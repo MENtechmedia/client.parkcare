@@ -14,27 +14,20 @@ class Model
     {
         $client = Client::getInstance();
 
-        return self::getContentsFromResponse($client->get($endpoint));
+        return $client->get($endpoint);
     }
 
     public static function byId($endpoint, $id)
     {   
         $client = Client::getInstance();
 
-        return self::getContentsFromResponse($client->get($endpoint . "/" . $id));
+        return $client->get($endpoint . "/" . $id);
     }
 
     public static function create($endpoint, $data = [])
     {
         $client = Client::getInstance();
 
-        return self::getContentsFromResponse($client->post($endpoint, $data));
+        return $client->post($endpoint, $data);
     }
-
-    private static function getContentsFromResponse($response)
-    {
-        return $response->getBody()->getContents();
-    }
-
-
 }

@@ -51,6 +51,8 @@ class Client
         } catch (ApiException $e){
 
         }
+
+        return $response->getBody()->getContents();
     }
 
     public function get($endpoint) 
@@ -60,7 +62,7 @@ class Client
 
     public function put($endpoint) 
     {
-        
+
     }
     
     public function post($endpoint, $data) 
