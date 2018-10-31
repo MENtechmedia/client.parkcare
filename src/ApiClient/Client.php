@@ -56,7 +56,11 @@ class Client
 
         $data = array_pop($decodedResponse);
 
-        $data['data'] = ModelTransformer::createModelsFromData($data['data']);
+        if(array_key_exists('data', $data)) {
+            $data['data'] = ModelTransformer::createModelsFromData($data['data']);
+        }else{
+            $data = ModelTransformer::createModelFromData($data);
+        }
 
         return $data;
     }

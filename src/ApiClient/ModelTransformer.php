@@ -13,4 +13,9 @@ class ModelTransformer
 
         return collect($collection);
     }
+
+    public static function createModelFromData($data)
+    {
+        return new Model($data);
+    }
 }
