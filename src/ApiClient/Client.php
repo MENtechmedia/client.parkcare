@@ -1,6 +1,7 @@
 <?php namespace MENtechmedia\ApiClient;
 
 use GuzzleHttp;
+use GuzzleHttp\Exception\ClientException;
 
 class Client
 {
@@ -48,8 +49,8 @@ class Client
             $response = $this->client->request($method, $endpoint, [
                 'json' => $data
             ]);
-        } catch (ApiException $e){
-
+        } catch (ClientException $e){
+            return response()->json($e->getMessage(), $e->getResponse()->getStatusCode());
         }
 
         $decodedResponse = $this->decodeResponseData($response->getBody()->getContents());
