@@ -82,7 +82,7 @@ class Client
     
     public function post($endpoint, $data) 
     {
-        return $this->call('GET', $endpoint, $data);
+        return $this->call('POST', $endpoint, $data);
     }
     
     public function delete($endpoint) 
