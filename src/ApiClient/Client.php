@@ -31,7 +31,8 @@ class Client
 			'headers' => [
 				'Accept' => 'application/json',
 				'Content-Type' => 'application/x-www-form-urlencoded',
-			]
+                'Connection' => 'close'
+            ]
 		]);
     }
 
